@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.webapp.escola_xyz_b.Model.Administrador;
 import com.webapp.escola_xyz_b.Repository.AdministradorRepository;
 import com.webapp.escola_xyz_b.Repository.verificaCadastroAdmRepository;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AdministradorController {
@@ -16,6 +18,8 @@ public class AdministradorController {
     AdministradorRepository ar;
     @Autowired
     verificaCadastroAdmRepository vcar;
+
+    boolean acessoAdm = false;
 
     @PostMapping("cadastrar-adm")
     public String cadastrarAdmBD(Administrador adm) {
@@ -27,6 +31,38 @@ public class AdministradorController {
             System.out.println("Falha ao Cadastrar");
         }
         return "/login/login-adm";
+    }
+
+    @GetMapping("interna-adm")
+    public String acessoPageInternaAdm() {
+        String vaiPara = "";
+        if (acessoAdm) {
+            vaiPara = "interna/interna-adm";
+        } else {
+            vaiPara = "redirect:/login-adm";
+        }
+        return vaiPara;
+    }
+
+    @PostMapping("acesso-adm")
+    public String acessoADM(@RequestParam String cpf,
+            @RequestParam String senha) {
+
+        try {
+            boolean verificaCpf = ar.existsById(cpf);
+            boolean verificaSenha = ar.findByCpf(cpf).getSenha().equals(senha);
+            String url = "";
+            if (verificaCpf && verificaSenha) {
+                acessoAdm = true;
+                url = "redirect:/interna-adm";
+            } else {
+                url = "redirect:/login-adm";
+            }
+
+            return url;
+        } catch (Exception e) {
+            return "redirect:/login-adm";
+        }
     }
 
 }

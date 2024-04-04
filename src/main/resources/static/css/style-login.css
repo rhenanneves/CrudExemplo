@@ -8,10 +8,10 @@ body {
 .card {
     border: none;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.651);
 }
 .card-header {
-    background-color: #333;
+    background-color: #120055;
     color: #fff;
     text-align: center;
     font-weight: bold;
@@ -27,7 +27,7 @@ body {
     padding: 10px 20px;
 }
 .btn-login {
-    background-color: #333;
+    background-color: #120055;
     border: none;
     border-radius: 25px;
     padding: 10px 20px;
@@ -37,9 +37,9 @@ body {
     transition: background-color 0.3s;
 }
 .btn-login:hover {
-    background-color: #555;
+    background-color: #6a81ff;
 }
 form a {
     text-decoration: none;
-    color: #333;
+    color: #333333;
 }

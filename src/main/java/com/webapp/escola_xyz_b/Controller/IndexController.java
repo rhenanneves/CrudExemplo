@@ -21,5 +21,11 @@ public class IndexController {
         return "cadastro/cadastro-adm";
     }
 
+    @GetMapping("/login-prof")
+    public String acessoLoginProf() {
+        return "Professor/Login-prof";
+    }
+ 
+    
     
 }
