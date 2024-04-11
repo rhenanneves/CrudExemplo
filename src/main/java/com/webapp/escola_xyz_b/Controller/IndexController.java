@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 @Controller
 public class IndexController {
     @GetMapping("/home")
@@ -16,6 +15,7 @@ public class IndexController {
     public String acessoPageLoginAdm() {
         return "login/login-adm";
     }
+
     @GetMapping("/cadastro-adm")
     public String acessoCadastroAdm() {
         return "cadastro/cadastro-adm";
@@ -25,7 +25,15 @@ public class IndexController {
     public String acessoLoginProf() {
         return "Professor/Login-prof";
     }
- 
-    
+
+    @GetMapping("/cadastro-prof")
+    public String acessoCadastroProf() {
+        return "Professor/cadastro-prof";
+    }
+
+    @GetMapping("/interna-prof-adm")
+    public String acessoInternaProfAdm() {
+        return "interna/interna-prof-adm";
+    }
     
 }

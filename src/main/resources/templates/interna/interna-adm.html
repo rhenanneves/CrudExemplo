@@ -1,14 +1,67 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colégio Progresso Futuro</title>
     <div th:include="~{fragmentos/head}"><!-- Menu estilizacao --></div>
     <link rel="stylesheet" th:href="@{css/style-login.css}">
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 100px;
+        }
+        
+        .card {
+            width: 600px;
+            height: 700px;
+            background-color: #a7f5ff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 38, 255, 0.329);
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        a button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-    
-        <div th:insert="~{fragmentos/header :: header}"><!-- barra de menu --></div>   
+    <div th:insert="~{fragmentos/header :: header}"><!-- barra de menu --></div>   
+
+    <div class="container">
+        <div class="card">
+            <img th:src="@{/img/docente.jpg}" alt="Foto do Docente">
+            <br>
+            <h2>Área do Docente</h2>
+            <a href="/cadastro-prof"><button>Cadastrar Docente</button></a>
+        </div>
+        
+        <div class="card">
+            <img th:src= "@{/img/aluno.jpg}"alt="Foto do Aluno">
+            <br><br>
+            <h2>Área do Aluno</h2>
+            <a href=""><button>Cadastrar Aluno</button></a>
+        </div>
+    </div>
 </body>
 </html>
