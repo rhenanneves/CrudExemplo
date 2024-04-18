@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 
 
 @Entity
-public class Professor {
+public class Professor implements Serializable{
     //Atributos
     @Id
     private String cpf;

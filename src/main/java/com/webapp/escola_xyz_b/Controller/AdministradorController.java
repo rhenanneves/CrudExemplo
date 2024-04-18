@@ -3,7 +3,7 @@ package com.webapp.escola_xyz_b.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
 
 import com.webapp.escola_xyz_b.Model.Administrador;
 import com.webapp.escola_xyz_b.Repository.AdministradorRepository;

@@ -40,5 +40,12 @@ public class IndexController {
     public String acessoProf() {
         return "Professor/interna-prof";
     }
-    
+    @GetMapping("/login-aluno")
+    public String loginAluno() {
+        return "Aluno/login-aluno";
+    }
+    @GetMapping("/cadastro-aluno")
+    public String cadastroAluno() {
+        return "Aluno/cadastro-aluno";
+    }
 }

@@ -9,5 +9,8 @@ import com.webapp.escola_xyz_b.Model.VerificaCadastroAdm;
 @Repository
 public interface VerificaCadastroProfRepository extends CrudRepository<Professor, String> {
     // Aqui você pode adicionar métodos personalizados, se necessário
-    VerificaCadastroAdm findByCpf(String cpf);
+    static VerificaCadastroAdm findByCpf(String cpf) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findByCpf'");
+    }
 }
