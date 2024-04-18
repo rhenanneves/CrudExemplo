@@ -36,4 +36,9 @@ public class IndexController {
         return "interna/interna-prof-adm";
     }
     
+    @GetMapping("/acesso-prof")
+    public String acessoProf() {
+        return "Professor/interna-prof";
+    }
+    
 }
