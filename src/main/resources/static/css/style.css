@@ -33,3 +33,20 @@ nav .acesso {
     display: flex;
     justify-content: center;
 }
+.carousel-image {
+    width: 100%;
+    height:900px; /* Altere o valor conforme necessário para manter o mesmo tamanho */
+    margin-top: 50px;
+  }
+  #carouselExampleIndicators{
+    width: 60%;
+    margin-left: 400px;
+  }
+  #card{
+width: 100%;
+  }
+  #card img{
+    width: 100%;
+    height:400px; /* Altere o valor conforme necessário para manter o mesmo tamanho */
+    margin-top: 50px;
+  }

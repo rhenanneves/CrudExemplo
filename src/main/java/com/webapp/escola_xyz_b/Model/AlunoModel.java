@@ -13,6 +13,17 @@ public class AlunoModel implements Serializable {
     private String nome;
     private String registroAluno;
     private String senha;
+    private String materia;
+
+ 
+
+    public String getMateria() {
+        return materia;
+    }
+
+    public void setMateria(String materia) {
+        this.materia = materia;
+    }
 
     public String getNome() {
         return nome;

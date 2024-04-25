@@ -1,4 +1,5 @@
 package com.webapp.escola_xyz_b.Controller;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +10,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.webapp.escola_xyz_b.Model.AlunoModel;
 import com.webapp.escola_xyz_b.Repository.AlunoRepository;
-
 
 @Controller
 public class AlunoController {
@@ -23,8 +23,9 @@ public class AlunoController {
     public String postCadastroAluno(AlunoModel aluno, Model model) {
         // Verifica se algum campo obrigatório está vazio
         if (aluno.getNome() == null || aluno.getNome().isEmpty() ||
-            aluno.getRegistroAluno() == null || aluno.getRegistroAluno().isEmpty() ||
-            aluno.getSenha() == null || aluno.getSenha().isEmpty()) {
+                aluno.getMateria() == null || aluno.getMateria().isEmpty() ||
+                aluno.getRegistroAluno() == null || aluno.getRegistroAluno().isEmpty() ||
+                aluno.getSenha() == null || aluno.getSenha().isEmpty()) {
             model.addAttribute("mensagem", "Por favor, preencha todos os campos.");
             return "interna/interna-adm";
         }
@@ -32,38 +33,38 @@ public class AlunoController {
         // Salva o aluno se todos os campos estiverem preenchidos
         alunoRepository.save(aluno);
         model.addAttribute("mensagem", "Cadastro de aluno realizado com sucesso!");
-        return "interno/interna-adm";
+        return "interna/interna-adm";
     }
 
     @PostMapping("acesso-aluno")
-    public ModelAndView AcessoPageAdm(@RequestParam String matricula, @RequestParam String senha,
+    public ModelAndView AcessoPageAdm(@RequestParam String registroAluno, @RequestParam String senha,
             RedirectAttributes attributes) {
-    
+
         // Verifica se o CPF fornecido existe no banco de dados
-        AlunoModel aluno = alunoRepository.findByRegistroAluno(matricula);
+        AlunoModel aluno = alunoRepository.findByRegistroAluno(registroAluno);
         if (aluno == null) {
-            
+
             ModelAndView errorMv = new ModelAndView();
             errorMv.setViewName("redirect:/login-aluno");
             return errorMv;
         }
-    
+
         // O CPF existe, continua com a verificação da senha
         boolean acessoSenha = senha.equals(aluno.getSenha());
         ModelAndView mv = new ModelAndView();
-    
+
         if (acessoSenha) {
             String mensagem = "Login Realizado com sucesso";
             System.out.println(mensagem);
             acessoAluno = true;
 
-            mv.setViewName("interno/interna-aluno");
+            mv.setViewName("Aluno/interna-aluno");
         } else {
             String mensagem = "Senha Incorreta";
             System.out.println(mensagem);
             mv.setViewName("redirect:/login-aluno");
         }
-    
+
         return mv;
     }
 }

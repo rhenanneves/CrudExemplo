@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colégio Progresso Futuro</title>
+    <div th:include="~{fragmentos/head}"><!-- Menu estilizacao --></div>
+    <link rel="stylesheet" th:href="@{css/style-login.css}">
+</head>
+<style>
+    h3{
+        text-align: center;
+        margin-top: 15px;
+    }
+    h5{
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+<body>
+
+    <div th:insert="~{fragmentos/header :: header}"><!-- barra de menu --></div>
+<h3>Olá, seja bem vindo! </h3>
+<div class="materia">
+    <h5>Deseja ver suas matérias?</h5>
+    
+    
+</div>
+
+</body>
+
+</html>

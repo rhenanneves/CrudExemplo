@@ -48,7 +48,7 @@ public class CadProfessorController {
             if (senha.equals(professor.getSenha())) {
                 String mensagem = "Login realizado com sucesso";
                 System.out.println(mensagem);
-                mv.setViewName("Professor/interna-prof");
+                mv.setViewName("Professor/acessoprof");
             } else {
                 String mensagem = "Senha incorreta";
                 System.out.println(mensagem);
