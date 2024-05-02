@@ -79,17 +79,21 @@ public class CadProfessorController {
 
     @GetMapping("/filtro-alunos")
     public ModelAndView lancarNotas(HttpSession session) {
-        ModelAndView modelAndView = new ModelAndView("Aluno/filtrar-alunos");
+        ModelAndView modelAndView = new ModelAndView();
         Professor professor = (Professor) session.getAttribute("Professor");
+    
         if (professor != null) {
+            modelAndView.setViewName("Aluno/filtrar-alunos");
             modelAndView.addObject("docente", professor);
             modelAndView.addObject("alunos", ar.findAll());
         } else {
-            // Adicionando uma mensagem de depuração
-            System.out.println("A sessão do professor não foi encontrada ou expirou.");
+            // Redirecionar para a página de login
             modelAndView.setViewName("Professor/Login-prof");
         }
+    
         return modelAndView;
     }
     
-}
+    }
+    
+
