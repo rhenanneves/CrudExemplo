@@ -47,7 +47,7 @@
 </head>
 <body>
     <div th:insert="~{fragmentos/header :: header}"><!-- barra de menu --></div>   
-
+   
     <div class="container">
         <div class="card">
             <img th:src="@{/img/docente.jpg}" alt="Foto do Docente">
@@ -67,6 +67,9 @@
             <a href="/gerenciamento-aluno"><button class="padrao">Gerenciamento de Alunos</button></a>
             
         </div>
+        
     </div>
+    <a href="/logout-adm" style="display: flex; justify-content: center; margin-top: 20px; text-decoration: none;"><button class="logout">Logout</button></a>
 </body>
+<div th:insert="~{fragmentos/footer :: footer}"><!-- footer --></div>   
 </html>

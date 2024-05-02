@@ -6,13 +6,27 @@
     <title>Colégio Progresso Futuro</title>
     <div th:include="~{fragmentos/head}"><!-- Menu estilizacao --></div>
     <link rel="stylesheet" th:href="@{css/style-login.css}">
+    <link rel="stylesheet" th:href="@{css/style-professor.css}">
+
 </head>
 <body>
     <div th:insert="~{fragmentos/header :: header}"><!-- barra de menu --></div>   
 
-    <a href="/filtro-alunos"><button class="padrao">Alunos da Turma</button></a>
-        
+    <div class="container">
+        <h1>Bem-vindo à sua página, Professor!</h1>
+        <div class="options">
+            <a href="/filtro-alunos">
+                <div class="option-card"  >
+                    <i class="fas fa-users"></i>
+                    <span>Alunos da Turma</span>
+                </div>
+            </a>
+            <!-- Adicione mais opções conforme necessário -->
+        </div>
+    </div>
+
       
 
 </body>
+
 </html>

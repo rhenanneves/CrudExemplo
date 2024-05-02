@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
 import com.webapp.escola_xyz_b.Model.Administrador;
 import com.webapp.escola_xyz_b.Repository.AdministradorRepository;
 import com.webapp.escola_xyz_b.Repository.verificaCadastroAdmRepository;
+
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -64,6 +66,11 @@ public class AdministradorController {
             return "redirect:/login-adm";
         }
     }
+     @GetMapping("/logout-adm")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login-adm";
+    }
 
-    
+
 }

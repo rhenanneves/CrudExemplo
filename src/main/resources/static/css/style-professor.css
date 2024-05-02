@@ -1,0 +1,52 @@
+
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.option-card {
+    width: 200px;
+    height: 150px;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 8px;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    
+}
+
+.option-card:hover {
+    background-color: #2980b9;
+}
+
+.option-card i {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.option-card span {
+    font-size: 18px;
+}
+
+
