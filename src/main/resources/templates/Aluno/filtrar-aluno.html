@@ -17,9 +17,8 @@
                 <tr>
                     <th>Ra</th>
                     <th>Nome</th>
-                    <th>Turma</th>
                     <th>Nota</th>
-                    <th>Falta</th>
+                   
                 </tr>
             </thead>
             <tbody>
@@ -27,7 +26,6 @@
                     <th:block th:if="${aluno.turma == docente.turmas}">
                         <td th:text="${aluno.ra}"></td>
                         <td th:text="${aluno.nome}"></td>
-                        <td th:text="${aluno.turma}"></td>
                         <td class="btn-cell">
                             <a th:href="@{'/lancamento-nota?ra=' + ${aluno.ra} }" class="btn-excluir">
                                 <i class="fas fa-trash-alt"></i> Lançar

@@ -59,12 +59,12 @@ public class CadProfessorController {
             } else {
                 String mensagem = "Senha incorreta";
                 System.out.println(mensagem);
-                mv.setViewName("redirect:/Professor/Login-prof");
+                mv.setViewName("Professor/Login-prof");
             }
         } else {
             String mensagem = "CPF não encontrado";
             System.out.println(mensagem);
-            mv.setViewName("redirect:/Professor/Login-prof");
+            mv.setViewName("Professor/Login-prof");
         }
 
         return mv;
