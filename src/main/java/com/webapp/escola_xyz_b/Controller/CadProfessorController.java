@@ -13,13 +13,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import com.webapp.escola_xyz_b.Model.Professor;
+import com.webapp.escola_xyz_b.Repository.AlunoRepository;
 import com.webapp.escola_xyz_b.Repository.ProfessorRepository;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class CadProfessorController {
 
     @Autowired
     ProfessorRepository pr;
+    AlunoRepository ar;
 
     @PostMapping("/cadastrar-prof")
     public String postCadastroDocente(Professor professor, Model model) {
@@ -72,4 +76,20 @@ public class CadProfessorController {
         model.addAttribute("Professores", professores);
         return "Professor/gerenciamento-prof"; 
     }
+
+    @GetMapping("/filtro-alunos")
+    public ModelAndView lancarNotas(HttpSession session) {
+        ModelAndView modelAndView = new ModelAndView("Aluno/filtrar-alunos");
+        Professor professor = (Professor) session.getAttribute("Professor");
+        if (professor != null) {
+            modelAndView.addObject("docente", professor);
+            modelAndView.addObject("alunos", ar.findAll());
+        } else {
+            // Adicionando uma mensagem de depuração
+            System.out.println("A sessão do professor não foi encontrada ou expirou.");
+            modelAndView.setViewName("Professor/Login-prof");
+        }
+        return modelAndView;
+    }
+    
 }
