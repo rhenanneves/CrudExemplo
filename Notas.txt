@@ -1,0 +1,30 @@
+ @GetMapping("/gerenciamento-docente")
+    public String listarDocentes(Model model) {
+        List<Docente> docentes = (List<Docente>) alr.findAll();
+        model.addAttribute("docentes", docentes);
+        return "gerenciamento/gerenciamento-docente"; 
+    }
+     @RequestMapping(value = "/delete-docente/{email}", method = RequestMethod.GET)
+    public String excluirProfessor(@PathVariable("email") String email) {
+        try {
+            Docente docente = alr.findByEmailInstitucional(email);
+            if (docente != null) {
+                alr.delete(docente);
+                System.out.println("Professor excluído com sucesso!");
+            } else {
+                System.out.println("Professor não encontrado para exclusão");
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao excluir professor: " + e.getMessage());
+        }
+        return "redirect:/gerenciamento-docente"; 
+    }
+
+    @RequestMapping(value = "/edit-docente/{emailInstitucional}", method = RequestMethod.GET)
+    public ModelAndView editarDocente(@PathVariable("emailInstitucional") String emailInstitucional) {
+        ModelAndView mv = new ModelAndView("crud/docente/edit-docente");
+        Docente docente = alr.findByEmailInstitucional(emailInstitucional);
+        mv.addObject("emailInstitucional", emailInstitucional);
+        mv.addObject("docente", docente);
+        return mv;
+    }

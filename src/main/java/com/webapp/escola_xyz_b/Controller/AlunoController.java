@@ -3,10 +3,12 @@ package com.webapp.escola_xyz_b.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import java.util.List;
 
 import com.webapp.escola_xyz_b.Model.AlunoModel;
 import com.webapp.escola_xyz_b.Repository.AlunoRepository;
@@ -15,7 +17,7 @@ import com.webapp.escola_xyz_b.Repository.AlunoRepository;
 public class AlunoController {
 
     @Autowired
-    private AlunoRepository alunoRepository;
+    private AlunoRepository ar;
 
     boolean acessoAluno = false;
 
@@ -31,7 +33,7 @@ public class AlunoController {
         }
 
         // Salva o aluno se todos os campos estiverem preenchidos
-        alunoRepository.save(aluno);
+        ar.save(aluno);
         model.addAttribute("mensagem", "Cadastro de aluno realizado com sucesso!");
         return "interna/interna-adm";
     }
@@ -41,7 +43,7 @@ public class AlunoController {
             RedirectAttributes attributes) {
 
         // Verifica se o CPF fornecido existe no banco de dados
-        AlunoModel aluno = alunoRepository.findByRegistroAluno(registroAluno);
+        AlunoModel aluno = ar.findByRegistroAluno(registroAluno);
         if (aluno == null) {
 
             ModelAndView errorMv = new ModelAndView();
@@ -66,5 +68,11 @@ public class AlunoController {
         }
 
         return mv;
+    }
+    @GetMapping("/gerenciamento-aluno")
+    public String listarAlunos(Model model) {
+        Iterable<AlunoModel> alunos = ar.findAll();
+        model.addAttribute("alunos", alunos);
+        return "Aluno/gerenciamento-aluno";
     }
 }

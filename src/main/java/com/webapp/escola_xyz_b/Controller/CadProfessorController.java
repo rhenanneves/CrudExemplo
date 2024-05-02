@@ -1,13 +1,16 @@
 package com.webapp.escola_xyz_b.Controller;
 
 import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
 
 import com.webapp.escola_xyz_b.Model.Professor;
 import com.webapp.escola_xyz_b.Repository.ProfessorRepository;
@@ -61,5 +64,12 @@ public class CadProfessorController {
         }
 
         return mv;
+    }
+
+    @GetMapping("/gerenciamento-docente")
+    public String listarDocentes(Model model) {
+        List<com.webapp.escola_xyz_b.Model.Professor> professores = (List<Professor>) pr.findAll(); // Importe explicitamente a classe Professor se necessário
+        model.addAttribute("Professores", professores);
+        return "Professor/gerenciamento-prof"; 
     }
 }
